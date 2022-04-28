@@ -1,24 +1,48 @@
-import logo from './logo.svg';
+
 import './App.css';
+import Basic from './components/Basic';
+import Button from './components/Button';
+import Cards from './components/Cards';
+import NavBar from './components/NavBar';
+import Navigation from './components/Navigation';
+import SearchBar from './components/SearchBar';
+import TravelRoute from './components/TravelRoute';
+import Data from "./data";
 
 function App() {
+  const cards = Data.map(item =>{
+    return <Cards 
+              key={item.id}
+              img={item.image}
+              title={item.title}  
+              airway={item.airway}
+              time={item.time}
+              GMT={item.GMT}
+              price={item.price}
+              
+              />
+            
+  })
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      
+        <NavBar
+        name="Lisa"
+        companyName="Rahisi"
+        />
+        <SearchBar/>
+        <Basic/>
+        <div className='card-scroller' onClick={()=>{
+          console.log('I got clicked');
+        }}>
+        {cards}
+        </div>
+        <Button/>
+        {/* <TravelRoute/> */}
+         <Navigation/> 
+        
     </div>
+
   );
 }
 
